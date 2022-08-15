@@ -103,7 +103,7 @@ router.post(
       console.error(err.message);
       res.status(500).send("server Error");
     }
-    res.send("hello");
+    // res.send("hello");
   }
 );
 
@@ -126,9 +126,10 @@ router.get("/", async (req, res) => {
 // @acess  Public
 
 router.get("/user/:user_id", async (req, res) => {
+  console.log(req.params)
   try {
     const profile = await Profile.findOne({
-      user: req.params.user_id,
+      _id: req.params.user_id,
     }).populate("user", ["name", "avatar"]);
     if (!profile) return res.status(400).json({ msg: "Profile not found" });
     res.json(profile);
@@ -148,7 +149,6 @@ router.get("/user/:user_id", async (req, res) => {
 router.delete("/", auth, async (req, res) => {
   try {
     //todo  -  remove users posts
-
     //Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     //Remove user

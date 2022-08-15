@@ -1,7 +1,7 @@
 {
-  "name": "decconnector",
+  "name": "devconnected",
   "version": "1.0.0",
-  "description": "Soical Network ",
+  "description": "application for developers",
   "main": "server.js",
   "scripts": {
     "start": "node server",
@@ -9,21 +9,19 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Farman",
+  "author": "Codeman",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "config": "^3.3.6",
-    "express": "^4.17.1",
-    "express-validator": "^6.13.0",
+    "config": "^3.3.7",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.12",
+    "mongoose": "^6.1.6",
     "request": "^2.88.2"
   },
   "devDependencies": {
-    "concurrently": "^6.3.0",
-    "nodemon": "^2.0.14",
-    "sass": "^1.54.4"
+    "concurrently": "^7.0.0"
   }
 }
