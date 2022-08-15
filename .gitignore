@@ -3,6 +3,7 @@ node_modules/
 /config/default.json
 
 /client/build
+/client/node_modules
 
 .DS_Store
 /client/.env.local
