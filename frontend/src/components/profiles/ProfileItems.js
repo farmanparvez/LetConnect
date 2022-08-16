@@ -6,7 +6,7 @@ const ProfileItems = ({ profile }) => {
 // const ProfileItems = ({ profile: { user:{ name, avatar}, skills, company, location, _id, }}) => {
   // const {} = user;
   // const { profile } = props
-    console.log(profile)
+    // console.log(profile)
   return (
     <div className="profile bg-light">
       <img src={profile?.user?.avatar} alt="" className="round-img" />
@@ -14,7 +14,7 @@ const ProfileItems = ({ profile }) => {
         <h2>{profile?.user?.name}</h2>
         <p>{profile?.company && <span> at {profile?.company}</span>}</p>
         <p className="my-1">{profile?.location && <span>{profile?.location}</span>}</p>
-        <Link to={`/profile/${profile?._id}`} className="btn btn-primary">
+        <Link to={`/profile/${profile?.user?._id}`} className="btn btn-primary">
           View Profile
         </Link>
       </div>

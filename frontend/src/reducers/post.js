@@ -1,6 +1,9 @@
 import {
     GET_POSTS,
     POSTS_ERRORS,
+    ADD_POST_ERROR,
+    ADD_POST_LIKE_ERROR,
+    REMOVE_POST_LIKE_ERROR
     // CLEAR_PROFILE,
     // UPDATE_PROFILE,
     // GET_PROFILES,
@@ -19,6 +22,10 @@ import {
       case GET_POSTS:
         return { ...state, posts: payload, loading: false };
       case POSTS_ERRORS:
+      case ADD_POST_ERROR:
+      case ADD_POST_LIKE_ERROR:
+      case REMOVE_POST_LIKE_ERROR:
+        
         return { ...state, error: payload, loading: false };
 
 

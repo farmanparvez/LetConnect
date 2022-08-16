@@ -1,20 +1,32 @@
-import React, { useEffect } from 'react'
-import { connect } from "react-redux"
-import { getPosts } from '../actions/post'
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import { getPosts } from "../actions/post";
+// import Spinner from "../layout/Spinner";
+import PostItem from "./PostItem";
+import PostForm from "./PostForm";
 
-const Post = ({ getPosts, post: { isLoading, posts }}) => {
-
-    useEffect(() => {
-        getPosts()
-    },[])
+const Post = ({ getPosts, post: { isLoading, posts } }) => {
+  useEffect(() => {
+    getPosts();
+  }, []);
   return (
-    <div>Post</div>
-  )
-}
+    <section className="container">
+      <h1 className="large text-primary">Posts</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Welcome to the community
+      </p>
+      <PostForm />
+      <div className="posts">
+        {posts.map((post) => (
+          <PostItem key={post._id} post={post} />
+        ))}
+      </div>
+    </section>
+  );
+};
 
-const mapStateToProps = state => ({
-    post: state.post
+const mapStateToProps = (state) => ({
+  post: state.post,
+});
 
-})
-
-export default connect( mapStateToProps , { getPosts })(Post)
+export default connect(mapStateToProps, { getPosts })(Post);
