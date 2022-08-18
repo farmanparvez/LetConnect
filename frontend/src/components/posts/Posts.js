@@ -5,7 +5,7 @@ import { getPosts } from "../actions/post";
 import PostItem from "./PostItem";
 import PostForm from "./PostForm";
 
-const Post = ({ getPosts, post: { isLoading, posts } }) => {
+const Posts = ({ getPosts, post: { isLoading, posts } }) => {
   useEffect(() => {
     getPosts();
   }, []);
@@ -29,4 +29,4 @@ const mapStateToProps = (state) => ({
   post: state.post,
 });
 
-export default connect(mapStateToProps, { getPosts })(Post);
+export default connect(mapStateToProps, { getPosts })(Posts);

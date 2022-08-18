@@ -10,7 +10,11 @@ import {
   REMOVE_LIKE_ON_POST,
   REMOVE_POST_LIKE_ERROR,
   DELETE_POSTS_ERRORS,
-  DELETE_POSTS
+  DELETE_POSTS,
+  GET_POST,
+  COMMET_POSTS_ERROR,
+  COMMET_POSTS,
+  REMOVE_COMMET
 } from "./types";
 
 //Get current users profile
@@ -21,6 +25,23 @@ export const getPosts = () => async (dispatch) => {
 
     dispatch({
       type: GET_POSTS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: POSTS_ERRORS,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const getPost = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/posts/${id}`);
+    console.log(res);
+
+    dispatch({
+      type: GET_POST,
       payload: res.data,
     });
   } catch (err) {
@@ -94,6 +115,44 @@ export const deletePost = (id) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(getPosts());
+  } catch (err) {
+    dispatch({
+      type: DELETE_POSTS_ERRORS,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const addComment = ({postId, text}) => async (dispatch) => {
+  try {
+    console.log(postId, text)
+    const res = await axios.put(`/api/posts/comment/${postId}`, {text});
+    console.log(res);
+
+    dispatch({
+      type: COMMET_POSTS,
+      payload: res.data,
+    });
+    dispatch(getPost(postId));
+  } catch (err) {
+    dispatch({
+      type: COMMET_POSTS_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+export const deleteComment = (postId, _id) => async (dispatch) => {
+  try {
+
+    const res = await axios.put(`/api/posts/removecomment/${postId}`, {commentId: _id});
+    console.log(res);
+
+    dispatch({
+      type: REMOVE_COMMET,
+      // payload: res.data,
+    });
+    dispatch(getPost(postId));
   } catch (err) {
     dispatch({
       type: DELETE_POSTS_ERRORS,

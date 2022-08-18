@@ -3,7 +3,8 @@ import {
     POSTS_ERRORS,
     ADD_POST_ERROR,
     ADD_POST_LIKE_ERROR,
-    REMOVE_POST_LIKE_ERROR
+    REMOVE_POST_LIKE_ERROR,
+    GET_POST
     // CLEAR_PROFILE,
     // UPDATE_PROFILE,
     // GET_PROFILES,
@@ -14,6 +15,7 @@ import {
     posts: [],
     loading: true,
     error: {},
+    singlePost: {}
   };
   
   export default function (state = initialState, action) {
@@ -21,6 +23,8 @@ import {
     switch (type) {
       case GET_POSTS:
         return { ...state, posts: payload, loading: false };
+      case GET_POST:
+        return { ...state, singlePost: payload, loading: false };
       case POSTS_ERRORS:
       case ADD_POST_ERROR:
       case ADD_POST_LIKE_ERROR:

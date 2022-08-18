@@ -24,3 +24,7 @@ export const REMOVE_LIKE_ON_POST = 'REMOVE_LIKE_ON_POST';
 export const REMOVE_POST_LIKE_ERROR = 'REMOVE_POST_LIKE_ERROR';    
 export const DELETE_POSTS = 'DELETE_POSTS';    
 export const DELETE_POSTS_ERRORS = 'DELETE_POSTS_ERRORS';    
+export const GET_POST = 'GET_POST';    
+export const COMMET_POSTS = 'COMMET_POSTS';    
+export const COMMET_POSTS_ERROR = 'COMMET_POSTS_ERROR';    
+export const REMOVE_COMMET = 'REMOVE_COMMET';    

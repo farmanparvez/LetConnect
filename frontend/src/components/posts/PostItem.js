@@ -14,9 +14,9 @@ const PostItem = ({
   post: { _id, text, name, avatar, user, likes, comments, date },
   showActions,
 }) => {
-
-  console.log(user, auth?.user?._id)
-  console.log(date)
+// console.log(post)
+  // console.log(user, auth?.user?._id)
+  // console.log(date)
   return (
     <div className="post bg-white p-1 my-1">
       <div>
@@ -27,7 +27,7 @@ const PostItem = ({
       </div>
       <div>
         <p className="my-1">{text}</p>
-        <p className="post-date">Posted on {formatDate(date)}</p>
+        {/* <p className="post-date">Posted on {formatDate(date)}</p> */}
 
         {showActions && (
           <Fragment>
@@ -67,6 +67,7 @@ const PostItem = ({
     </div>
   );
 };
+
 PostItem.defaultProps = {
   showActions: true
 };
